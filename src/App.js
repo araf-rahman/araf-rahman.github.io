@@ -15,7 +15,7 @@ function App() {
       <div className="app">
         <Switch>
           <Route path="/" exact>
-            <Redirect to="Homepage" />
+            <Redirect to="/Homepage" />
           </Route>
           <Route path="/Homepage" exact component={Homepage} />
           <Route path="/about" component={About} />
@@ -23,6 +23,7 @@ function App() {
           <Route path="/contact" component={Contact} />
           <Route path="/blog" exact component={Blog} />
           <Route path="/blog/:id" component={BlogDetail} />
+          <Route path="*" component={Homepage} /> {/* Fallback route */}
         </Switch>
         <Footer light />
       </div>
