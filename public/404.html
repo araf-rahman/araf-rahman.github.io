@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Page Not Found</title>
-    <meta http-equiv="refresh" content="0; URL=/" />
+    <script type="text/javascript">
+      // Preserve the path and redirect to the root URL
+      var redirectTo = window.location.pathname + window.location.search;
+      window.location.replace("/?" + redirectTo);
+    </script>
   </head>
   <body>
     <p>Redirecting...</p>

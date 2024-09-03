@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import Header from "../components/layouts/Header";
 import { fetchMarkdown } from "../utils/fetchMarkdown";
+import { Link } from "react-router-dom";
 import DOMPurify from 'dompurify'; // Import DOMPurify for sanitization
 
 const blogFiles = [
@@ -19,7 +20,7 @@ function Blog() {
         blogFiles.map(async (blog) => {
           const content = await fetchMarkdown(blog.filePath);
           const sanitizedContent = DOMPurify.sanitize(content); // Sanitize the content
-          const preview = sanitizedContent.substring(0, 148)+"..."; // Extract preview (first 3 lines)
+          const preview = sanitizedContent.substring(0, 148) + "..."; // Extract preview (first 3 lines)
           return { ...blog, content: sanitizedContent, preview };
         })
       );
@@ -39,9 +40,9 @@ function Blog() {
               <div className="blog-post">
                 <h3>{blog.title}</h3>
                 <ReactMarkdown>{blog.preview}</ReactMarkdown>
-                <a href={`/blog/${blog.id}`} className="btn btn-primary">
+                <Link to={`/blog/${blog.id}`} className="btn btn-primary">
                   READ MORE
-                </a>
+                </Link>
               </div>
             </div>
           ))}
